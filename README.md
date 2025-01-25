@@ -1,7 +1,7 @@
 ```bash
-_Hello hi, im not happy that you visited this repo (jus joking ✨)_
+"Hello hi, im not happy that you visited this repo (jus joking ✨)
 
-click the try now button below, like seriously. i want you to do this :)
+click the try now button below, like seriously. i want you to do this :)"
 ```
 
 ___
