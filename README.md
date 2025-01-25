@@ -1,7 +1,10 @@
 ```bash
 "Hello hi, im not happy that you visited this repo (jus joking ✨)
 
-click the try now button below, like seriously. i want you to do this :)"
+click the try now button below, like seriously. i want you to do this :)
+
+i put a lot of my heart into building this, and if you don't try it, if you dont try it then it'd be unfair haha.
+"
 ```
 
 ___
