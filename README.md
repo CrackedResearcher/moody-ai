@@ -1,6 +1,6 @@
-#### _Hello im not happy that you visited this repo (jus joking ✨)_
-
 ```bash
+_Hello hi, im not happy that you visited this repo (jus joking ✨)_
+
 click the try now button below, like seriously. i want you to do this :)
 ```
 
