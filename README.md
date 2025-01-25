@@ -15,9 +15,9 @@ ___
 <img width="882" alt="Screenshot 2025-01-25 at 2 06 19 PM" src="https://github.com/user-attachments/assets/29b4151d-bb91-41da-900d-ba18b3a14770" />
 
 
-as the saying goes:  
-
 ```bash
+as the saying goes:
+
 Moody AI is not your average mood tracker. Input your mood daily, monitor your emotional patterns, and let AI provide personalized insights to enhance your well-being.
 ```
 
