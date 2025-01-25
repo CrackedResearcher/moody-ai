@@ -1,4 +1,4 @@
-#### _Visit Moody AI: [Moody AI](https://moody-ai.onrender.com)_
+#### _Hello im not happy that you visited this repo (jus joking ✨)
 
 ---
 
