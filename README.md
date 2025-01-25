@@ -1,6 +1,6 @@
-# Visit Moody AI: [Moody AI](https://moody-ai.onrender.com)  
+#### Visit Moody AI: [Moody AI](https://moody-ai.onrender.com)  
 
-## As the saying goes:  
+As the saying goes:  
 
 ```bash
 Moody AI is not your average mood tracker. Input your mood daily, monitor your emotional patterns, and let AI provide personalized insights to enhance your well-being.
