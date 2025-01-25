@@ -1,5 +1,8 @@
-#### _Hello im not happy that you visited this repo (jus joking ✨)
+#### _Hello im not happy that you visited this repo (jus joking ✨)_
 
+```bash
+click the try now button below, like seriously. i want you to do this :)
+```
 ---
 
 <a href="https://moody-ai.onrender.com" target="_blank"><img width="130" height="37" alt="image" src="https://github.com/user-attachments/assets/081108fd-00bb-4976-88dc-914745c965b8"></a>&nbsp;&nbsp;<a href="https://x.com/@0xayush1" target="_blank"><img width="130" height="37" alt="image" src="https://github.com/user-attachments/assets/dae9cf64-2b21-4417-8a6f-a5a8daed78a2"></a>&nbsp;&nbsp;<a href="https://github.com/CrackedResearcher/SyncPost/stargazers" target="_blank"><img width="130" height="37" alt="image" src="https://github.com/user-attachments/assets/86e1d791-12e2-49f3-b8e8-90c5b9ae6768"></a>
