@@ -1,22 +1,25 @@
-hell yeah i wan you to visit this site and use it [Moody AI](https://moody-ai.onrender.com) 
+hell yeah i wan you to visit this site and use it:
 
-## As the saying goes: 
+# Visit Moody AI: [Moody AI](https://moody-ai.onrender.com)  
+
+## As the saying goes:  
 
 ```bash
-Moody AI is not your average mood tracker. Input your mood daily, monitor your emotional patterns, and let AI provide personalized insights to enhance your well being.
+Moody AI is not your average mood tracker. Input your mood daily, monitor your emotional patterns, and let AI provide personalized insights to enhance your well-being.
 ```
 
-Made by:
+Made with love and powered by:
 
+```bash
+We call it the TECH STACK.
 ```
-We call it as TECH STACK
-```
 
-| **Technology**  | **Role**          | **Description**                                              |
-|------------------|-------------------|--------------------------------------------------------------|
-| **Next.js**      | Frontend          | Not your average full-stack framework—it's the Beyoncé of JS. |
-| **MongoDB**      | Database          | Where your data parties in JSON format.                      |
-| **Express.js**   | Server            | The roadie that sets up your API gigs.                       |
-| **Node.js**      | Runtime           | JavaScript’s engine on steroids.                             |
+| **Tech Stack** | **Description**                                                                 |
+|-----------------|---------------------------------------------------------------------------------|
+| **Frontend**    | **Next.js**: Not your average full-stack framework. It's the Beyoncé of React. |
+| **Backend**     | **MongoDB**: The database where your data finds eternal peace.                |
+| **Server**      | **Express.js**: The minimalist web server that's fast, lightweight, and sassy.|
+| **Runtime**     | **Node.js**: Because JavaScript needed to spread its wings on the server side.|
 
-> "This isn’t your MERN stack. It’s my NERN stack." 💻🔥
+> "This isn't your MERN stack. It's my NERN stack."
+
