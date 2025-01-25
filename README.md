@@ -1,4 +1,4 @@
-#### Visit Moody AI: [Moody AI](https://moody-ai.onrender.com) 
+#### _Visit Moody AI: [Moody AI](https://moody-ai.onrender.com)_
 
 ---
 
@@ -7,6 +7,7 @@
 ---
 
 <img width="882" alt="Screenshot 2025-01-25 at 2 06 19 PM" src="https://github.com/user-attachments/assets/29b4151d-bb91-41da-900d-ba18b3a14770" />
+
 
 as the saying goes:  
 
