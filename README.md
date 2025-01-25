@@ -1,5 +1,3 @@
-hell yeah i wan you to visit this site and use it:
-
 # Visit Moody AI: [Moody AI](https://moody-ai.onrender.com)  
 
 ## As the saying goes:  
@@ -14,7 +12,7 @@ Made with love and powered by:
 We call it the TECH STACK.
 ```
 
-| **Tech Stack** | **Description**                                                                 |
+| **Tech Stack**  | **Description**                                                                 |
 |-----------------|---------------------------------------------------------------------------------|
 | **Frontend**    | **Next.js**: Not your average full-stack framework. It's the Beyoncé of React. |
 | **Backend**     | **MongoDB**: The database where your data finds eternal peace.                |
