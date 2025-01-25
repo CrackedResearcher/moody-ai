@@ -21,9 +21,9 @@ as the saying goes:
 Moody AI is not your average mood tracker. Input your mood daily, monitor your emotional patterns, and let AI provide personalized insights to enhance your well-being.
 ```
 
+```bash
 made with love and powered by:
 
-```bash
 "we also call it as the TECH STACK."
 ```
 
