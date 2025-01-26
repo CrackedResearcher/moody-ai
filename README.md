@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+"Hello hi, im not happy that you visited this repo (jus joking ✨)
+
+click the try now button below, like seriously. i want you to do this :)
+
+i put a lot of my heart into building this & if you don't try it, then it'd be unfair haha."
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+___
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<a href="https://moody-ai.onrender.com" target="_blank"><img width="130" height="37" alt="image" src="https://github.com/user-attachments/assets/081108fd-00bb-4976-88dc-914745c965b8"></a>&nbsp;&nbsp;<a href="https://x.com/@0xayush1" target="_blank"><img width="130" height="37" alt="image" src="https://github.com/user-attachments/assets/dae9cf64-2b21-4417-8a6f-a5a8daed78a2"></a>&nbsp;&nbsp;<a href="https://github.com/CrackedResearcher/moody-ai/stargazers" target="_blank"><img width="130" height="37" alt="image" src="https://github.com/user-attachments/assets/86e1d791-12e2-49f3-b8e8-90c5b9ae6768"></a>
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+<img width="882" alt="Screenshot 2025-01-25 at 2 06 19 PM" src="https://github.com/user-attachments/assets/29b4151d-bb91-41da-900d-ba18b3a14770" />
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+as the saying goes:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Moody AI is not your average mood tracker. Input your mood daily, monitor your emotional patterns, and let AI provide personalized insights to enhance your well-being.
+```
 
-## Deploy on Vercel
+```bash
+made with love and powered by:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+"we also call it as the TECH STACK."
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| **Tech Stack**  | **Description**                                                                 |
+|-----------------|---------------------------------------------------------------------------------|
+| **Frontend**    | **Next.js**: Not your average full-stack framework. It's the Beyoncé of React. |
+| **Backend**     | **MongoDB**: The database where your data finds eternal peace.                |
+| **Server**      | **Express.js**: The minimalist web server that's fast, lightweight, and sassy.|
+| **Runtime**     | **Node.js**: Because JavaScript needed to spread its wings on the server side.|
+
+Deployed on: [Render dot com](https://render.com)
+
+> "this isn't your MERN stack. it's my NERN stack."
+
+
