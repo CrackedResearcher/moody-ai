@@ -1,5 +1,5 @@
 "use client";
-import { loginUser } from "@/app/api/authActions/auth";
+import { loginUser } from "@/app/server/actions/authActions";
 import { Eye, EyeOff } from "lucide-react";
 import React, { useState } from "react";
 import { toast } from "react-toastify";

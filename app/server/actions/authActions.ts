@@ -1,68 +1,52 @@
-"use server"
-import { cookies } from "next/headers";
+// app/server/actions/authActions.ts
+'use server';
 
-type FormData = {
-    email: string;
-    password: string;
-    name: string;
-  };
+import { cookies } from 'next/headers';
+
 
 type loginData = {
     email: string;
     password: string;
 }
 
-type authResponse = {
-    success: boolean;
-    message: string;
-}
 
-export async function registerUser({email, password, name}: FormData){
+export async function registerUser(formData: { email: string; password: string; name: string }) {
   try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/register/`,{
-          method: "POST", 
-          headers: {
-              "Content-Type": "application/json",
-          },
-          body: JSON.stringify({email, password, name}),
-      });
-      
-      const data = await response.json();
-      const { messsage, accessToken, refreshToken } = data;
-      const cookieStore = await cookies();
-      
-      if (response.status === 201){
-        cookieStore.set('accessTokenMoodyAI', accessToken, {
-          httpOnly: true,
-          path: '/',
-          maxAge: 60 * 60 * 24 * 7, // 7 days
-          secure: process.env.NODE_ENV === 'production',
-          sameSite: 'strict',
-        });
-    
-        // Set refresh token cookie
-        cookieStore.set('refreshTokenMoodyAI', refreshToken, {
-          httpOnly: true,
-          path: '/',
-          maxAge: 60 * 60 * 24 * 7, // 7 days
-          secure: process.env.NODE_ENV === 'production',
-          sameSite: 'strict',
-        });
+    const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/register/`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
 
-          
-          return {
-              success: true,
-              message: "You have been successfully registered!"
-          }
-      } 
-      else if (response.status === 400){
-          return {
-              success: false,
-              message: "You already have an account linked to the email you entered. Please login instead.."
-          }
-      }
+    const data = await response.json();
+    console.log("the register endpoint gave thsi: ", data)
+    const cookieStore = await cookies();
+    const { success, message, accessToken, refreshToken } = data;
+
+    cookieStore.set('accessTokenMoodyAI', accessToken, {
+      httpOnly: true,
+      path: '/',
+      maxAge: 60 * 60 * 24 * 7, // 7 days
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+    });
+
+    // Set refresh token cookie
+    cookieStore.set('refreshTokenMoodyAI', refreshToken, {
+      httpOnly: true,
+      path: '/',
+      maxAge: 60 * 60 * 24 * 7, // 7 days
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+    });
+
+
+    return {
+        success: success, message: message
+    };
   } catch (error) {
-      console.error("An error occurred on server side: ", error)
+    console.error("Error registering user:", error);
+    return { success: false, message: "Failed to register user" };
   }
 }
 
@@ -86,12 +70,12 @@ export async function loginUser({ email, password }: loginData) {
     }
 
     const cookieStore = await cookies();
-    const { message, accessToken, refreshToken } = data;
+    const { success, message, accessToken, refreshToken } = data;
 
     cookieStore.set('accessTokenMoodyAI', accessToken, {
       httpOnly: true,
       path: '/',
-      maxAge: 60 * 60 * 24 * 7, // 7 days
+      maxAge: 60 * 15, // 15 m
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
     });
@@ -105,12 +89,11 @@ export async function loginUser({ email, password }: loginData) {
       sameSite: 'strict',
     });
 
-    
-
     return {
-      success: true,
-      message: data.message,
+      success: success,
+      message: message,
     };
+
   } catch (error) {
     console.error("An error occurred during logging in the user:", error);
     return {
