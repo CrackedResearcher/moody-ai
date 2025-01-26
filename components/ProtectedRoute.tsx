@@ -38,7 +38,7 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
             >
               <circle
                 fill="none"
-                stroke-opacity="1"
+                strokeOpacity="1"
                 stroke="#3C45FF"
                 strokeWidth=".5"
                 cx="100"
@@ -55,7 +55,7 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
                   repeatCount="indefinite"
                 />
                 <animate
-                  attributeName="stroke-width"
+                  attributeName="strokeWidth"
                   calcMode="spline"
                   dur="1.5"
                   values="0;25"
@@ -64,7 +64,7 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
                   repeatCount="indefinite"
                 />
                 <animate
-                  attributeName="stroke-opacity"
+                  attributeName="strokeOpacity"
                   calcMode="spline"
                   dur="1.5"
                   values="1;0"
@@ -76,7 +76,7 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
             </svg>
           </div>
           <p className="mt-1 font-mono font-bold">
-            Wait, taking you to MoodyAI.. in just a moment!
+            Hold on, we are taking you to MoodyAI.. in just a moment!
           </p>
         </div>
       </>

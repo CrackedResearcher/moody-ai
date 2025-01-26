@@ -9,8 +9,13 @@ type loginData = {
     password: string;
 }
 
+export type authResponse = {
+    message: string;
+    success: boolean;
+}
 
-export async function registerUser(formData: { email: string; password: string; name: string }) {
+
+export async function registerUser(formData: { email: string; password: string; name: string }): Promise<authResponse> {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/register/`, {
       method: "POST",
@@ -50,7 +55,7 @@ export async function registerUser(formData: { email: string; password: string; 
   }
 }
 
-export async function loginUser({ email, password }: loginData) {
+export async function loginUser({ email, password }: loginData): Promise<authResponse> {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/login/`, {
       method: "POST",
@@ -103,7 +108,8 @@ export async function loginUser({ email, password }: loginData) {
   }
 }
 
-export async function logoutUser(){
+//attcah the promise of auth reponse here below
+export async function logoutUser(): Promise<authResponse> {
   const cookieStore = await cookies();
   const refreshToken = cookieStore.get("refreshTokenMoodyAI")?.value;
   try {
