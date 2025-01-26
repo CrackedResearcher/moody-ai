@@ -1,9 +1,11 @@
 "use server"
 import { getCookies } from "@/utils/getCookies"
 
+
 export type UserDetails = {
     username: string;
     email: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     [key: string]: any; 
 }
 
