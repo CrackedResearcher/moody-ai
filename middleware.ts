@@ -1,9 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export const config = {
-  matcher: ["/dashboard/:path*", "/login", "/register"],
-};
-
 export async function middleware(req: NextRequest) {
   const { pathname } = new URL(req.url);
   const token = req.cookies.get("accessTokenMoodyAI")?.value;
@@ -26,10 +22,8 @@ export async function middleware(req: NextRequest) {
       `${process.env.NEXT_PUBLIC_SERVER_URL}/api/verify-token`,
       {
         method: "POST",
-        credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          Cookie: req.headers.get("Cookie") || "",
         },
         body: JSON.stringify({ token }),
       }
@@ -43,24 +37,28 @@ export async function middleware(req: NextRequest) {
         `${process.env.NEXT_PUBLIC_SERVER_URL}/api/refresh`,
         {
           method: "POST",
-          credentials: "include",
           headers: {
             "Content-Type": "application/json",
-            Cookie: req.headers.get("Cookie") || "",
           },
         }
       );
 
+      const refreshData = await refreshRes.json();
+
       if (refreshRes.ok) {
-        // forward Set-Cookie headers to client
         const response = NextResponse.next();
-        const cookies = refreshRes.headers.get("set-cookie");
         
-        if (cookies) {
-          cookies.split(/,\s*/).forEach(cookie => {
-            response.headers.append("Set-Cookie", cookie);
-          });
-        }
+        // Manually set new cookies
+        response.cookies.set("accessTokenMoodyAI", refreshData.accessToken, {
+          httpOnly: true,
+          sameSite: 'strict',
+          path: '/'
+        });
+        response.cookies.set("refreshTokenMoodyAI", refreshData.refreshToken, {
+          httpOnly: true,
+          sameSite: 'strict',
+          path: '/'
+        });
         
         return response;
       }
