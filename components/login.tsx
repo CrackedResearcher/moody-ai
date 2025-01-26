@@ -3,8 +3,10 @@ import { loginUser } from "@/app/api/authActions/auth";
 import { Eye, EyeOff } from "lucide-react";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
+  const router = useRouter();
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -16,7 +18,7 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log("User Data:", formData);
-    const loadingToast = toast.loading("Registering you.. wait");
+    const loadingToast = toast.loading("Logging you in.. wait");
     const response = await loginUser(formData);
     if(response.success){
       toast.update(loadingToast, {
@@ -25,6 +27,9 @@ export default function Login() {
         isLoading: false,
         autoClose: 3000,
       });
+      console.log("---taking you to thte dashboard----")
+      router.push("/dashboard");
+      console.log("---wlcm to thte dashboard----")
     } else {
       toast.update(loadingToast, {
         render: response.message,
