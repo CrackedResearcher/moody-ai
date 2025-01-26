@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
+export const config = {
+  matcher: ["/dashboard/:path*", "/login", "/register"],
+};
+
 export async function middleware(req: NextRequest) {
   const { pathname } = new URL(req.url);
   const token = req.cookies.get("accessTokenMoodyAI")?.value;
@@ -46,9 +50,8 @@ export async function middleware(req: NextRequest) {
       const refreshData = await refreshRes.json();
 
       if (refreshRes.ok) {
+        // forward Set-Cookie headers to client
         const response = NextResponse.next();
-        
-        // Manually set new cookies
         response.cookies.set("accessTokenMoodyAI", refreshData.accessToken, {
           httpOnly: true,
           sameSite: 'strict',
@@ -59,6 +62,7 @@ export async function middleware(req: NextRequest) {
           sameSite: 'strict',
           path: '/'
         });
+
         
         return response;
       }
