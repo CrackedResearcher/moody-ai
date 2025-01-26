@@ -4,8 +4,10 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { toast } from "react-toastify";
 import { registerUser } from "@/app/api/authActions/auth";
+import { useRouter } from "next/navigation";
 
 export default function Register() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -59,6 +61,7 @@ export default function Register() {
         isLoading: false,
         autoClose: 3000,
       });
+      router.push("/dashboard");
       return;
     } else {
       toast.update(loadingToast, {

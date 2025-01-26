@@ -23,7 +23,8 @@ export async function registerUser({email, password, name}: FormData){
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({email, password, name})
+            body: JSON.stringify({email, password, name}),
+            credentials: "include",
         })
         if (response.status==201){
             return {

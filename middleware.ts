@@ -1,14 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/login", "/((?!api|_next/static|favicon.ico).*)"],
+  matcher: ["/dashboard/:path*", "/login", "/register"],
 };
 
 export async function middleware(req: NextRequest) {
   const { pathname } = new URL(req.url);
   const token = req.cookies.get("accessTokenMoodyAI")?.value;
 
-  if (pathname === "/login") {
+  const publicRoutes = ["/login", "/register"];
+  
+  if (publicRoutes.includes(pathname)) {
     if (token) {
       return NextResponse.redirect(new URL("/dashboard", req.url));
     }
