@@ -29,7 +29,7 @@ export default function Login() {
       });
       console.log("---taking you to thte dashboard----")
       router.push("/dashboard");
-      console.log("---wlcm to thte dashboard----")
+      console.log("---wlcm to the dashboard----")
     } else {
       toast.update(loadingToast, {
         render: response.message,
