@@ -150,17 +150,17 @@ const data = {
   projects: [
     {
       name: "My Daily Moods",
-      url: "#",
+      url: "/dashboard",
       icon: Frame,
     },
     {
       name: "Mood Analytics",
-      url: "#",
+      url: "/dashboard/analytics",
       icon: PieChart,
     },
     {
       name: "Recommendations",
-      url: "#",
+      url: "/dashboard/recommendations",
       icon: Map,
     },
   ],
