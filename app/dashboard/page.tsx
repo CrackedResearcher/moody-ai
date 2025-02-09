@@ -1,6 +1,6 @@
 "use client";
 import React from 'react'
-import Dashboard from '../(dashboard)/dashboardpage';
+import Dashboard from '../(dashboard)/page';
 import ProtectedRoute from '@/components/ProtectedRoute';
 
 const DashboardPage = () => {

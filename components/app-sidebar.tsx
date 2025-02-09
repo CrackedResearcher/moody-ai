@@ -155,12 +155,12 @@ const data = {
     },
     {
       name: "Mood Analytics",
-      url: "/dashboard/analytics",
+      url: "/analytics",
       icon: PieChart,
     },
     {
       name: "Recommendations",
-      url: "/dashboard/recommendations",
+      url: "/recommendations",
       icon: Map,
     },
   ],
