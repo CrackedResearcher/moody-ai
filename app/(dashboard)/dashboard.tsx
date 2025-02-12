@@ -18,6 +18,8 @@ import {
 import { TypingBox } from "@/components/ui/typing-box";
 import { Smile, Calendar, Clock } from "lucide-react";
 import { MoodInput } from "@/components/mood-input";
+import { AuroraBackground } from "@/components/ui/aurora-background";
+import { BackgroundGradient } from "@/components/ui/background-gradient";
 
 const Dashboard = () => {
 
@@ -89,17 +91,18 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min bg-gradient-to-r from-purple-400 to-blue-500 flex flex-col justify-center items-center">
-            <h2 className="mb-2 sm:mb-10 text-xl text-center sm:text-3xl dark:text-white text-black font-sans">
-              How was your day today?
-            </h2>
-            <MoodInput />
-            {/* <TypingBox
-              placeholders={placeholders}
-              onChange={handleChange}
-              onSubmit={onSubmit}
-            /> */}
-          </div>
+
+          <BackgroundGradient>
+            <div className="h-[430px] flex-1 bg-muted/50 flex flex-col justify-center items-center backdrop-blur-sm rounded-xl">
+        
+              <MoodInput />
+              {/* <TypingBox
+                placeholders={placeholders}
+                onChange={handleChange}
+                onSubmit={onSubmit}
+              /> */}
+            </div>
+          </BackgroundGradient>
         </div>
       </SidebarInset>
     </SidebarProvider>

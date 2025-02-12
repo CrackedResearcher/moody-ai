@@ -4,6 +4,7 @@ import { Eye, EyeOff } from "lucide-react";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { BackgroundGradient } from "./ui/background-gradient";
 
 export default function Login() {
   const router = useRouter();
@@ -19,25 +20,23 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
     console.log("User Data:", formData);
-  
+
     const loginPromise: Promise<authResponse> = loginUser(formData);
-  
-    toast.promise(
-      loginPromise,
-      {
-        loading: 'Logging you in...',
-        success: (data: authResponse) => {
-          console.log("---taking you to the dashboard----");
-          router.push("/dashboard");
-          console.log("---wlcm to the dashboard----");
-          return data.message; 
-        },
-        error: (data: authResponse) => {
-          console.error('Login failed:', data);
-          return data.message;
-        },
-      })
-  
+
+    toast.promise(loginPromise, {
+      loading: "Logging you in...",
+      success: (data: authResponse) => {
+        console.log("---taking you to the dashboard----");
+        router.push("/dashboard");
+        console.log("---wlcm to the dashboard----");
+        return data.message;
+      },
+      error: (data: authResponse) => {
+        console.error("Login failed:", data);
+        return data.message;
+      },
+    });
+
     setLoading(false);
   };
 
