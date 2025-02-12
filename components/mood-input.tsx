@@ -4,6 +4,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
+import logMood from "@/app/server/actions/moodLogger";
+import toast from "react-hot-toast";
 
 const emotions = [
   { emoji: "😁", label: "Happy" },
@@ -34,6 +36,14 @@ export function MoodInput() {
   const [moodScore, setMoodScore] = useState(5);
   const [selectedActivities, setSelectedActivities] = useState<string[]>([]);
 
+  const handleLog = async () => {
+    const res = await logMood({ emotion: selectedEmotion, moodScore: moodScore, activities: selectedActivities});
+    if (res.success){
+      toast.success(res.message);
+    } else {
+      toast.error(res.message);
+    }
+  }
   return (
     <Card className="w-full max-w-2xl text-sans">
       <CardContent className="p-6">
@@ -138,14 +148,7 @@ export function MoodInput() {
                   : "hover:bg-slate-600"
               }`}
               disabled={selectedActivities.length === 0}
-              onClick={() => {
-                console.log({
-                  emotion: selectedEmotion,
-                  moodScore,
-                  activities: selectedActivities,
-                  timestamp: new Date(),
-                });
-              }}
+              onClick={handleLog}
             >
               Save Entry
             </Button>

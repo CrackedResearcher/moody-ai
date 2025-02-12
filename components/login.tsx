@@ -4,7 +4,6 @@ import { Eye, EyeOff } from "lucide-react";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { BackgroundGradient } from "./ui/background-gradient";
 
 export default function Login() {
   const router = useRouter();
