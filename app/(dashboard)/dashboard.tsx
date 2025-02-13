@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AppSidebar } from "@/components/app-sidebar";
 import {
   Breadcrumb,
@@ -15,13 +15,69 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { TypingBox } from "@/components/ui/typing-box";
 import { Smile, Calendar, Clock } from "lucide-react";
 import { MoodInput } from "@/components/mood-input";
-import { AuroraBackground } from "@/components/ui/aurora-background";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
+import { getMoodData } from "../server/actions/moodLogger";
+import toast from "react-hot-toast";
+import { formatDistanceToNow } from "date-fns";
 
 const Dashboard = () => {
+  const emotions = [
+    { emoji: "😁", label: "Happy" },
+    { emoji: "😌", label: "Calm" },
+    { emoji: "🤗", label: "Excited" },
+    { emoji: "😔", label: "Sad" },
+    { emoji: "😰", label: "Anxious" },
+    { emoji: "😤", label: "Stressed" },
+    { emoji: "😐", label: "Neutral" },
+  ];
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [emotion, setEmotion] = useState<string>("N/A");
+  const [streak, setStreak] = useState<string>("0");
+  const [lastEntry, setLastEntry] = useState<string>("N/A");
+  const [emotionDesc, setEmotionDesc] = useState<string>("N/A");
+
+  const LoadingUI = () => (
+    <div>
+      <div className="text-4xl h-10 w-16 bg-white/20 rounded-lg animate-pulse my-2" />
+      <p className="text-sm h-5 w-36 bg-white/20 rounded-lg animate-pulse" />
+    </div>
+  );
+
+
+  useEffect(() => {
+    async function getDailyMoodData() {
+      try {
+        setIsLoading(true);
+        const res = await getMoodData();
+        if (res.success && res.data) {
+          const emotionLabel = res.data.latestMood?.emotion || "Neutral";
+          const emotionEmoji =
+            emotions.find((e) => e.label === emotionLabel)?.emoji || "😐";
+          setEmotionDesc(emotionLabel);
+          setEmotion(emotionEmoji);
+          setStreak(res.data.currentStreak.toString());
+          const lastEntryDate = res.data.lastEntry
+            ? new Date(res.data.lastEntry)
+            : null;
+          setLastEntry(
+            lastEntryDate
+              ? formatDistanceToNow(lastEntryDate, { addSuffix: true })
+              : "Not available"
+          );
+        } else {
+          toast.error(res.message || "Failed to fetch mood data");
+        }
+      } catch (error) {
+        toast.error("Failed to fetch mood data");
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    getDailyMoodData();
+  }, []);
 
   return (
     <SidebarProvider>
@@ -56,8 +112,18 @@ const Dashboard = () => {
                 <h3 className="text-lg font-semibold text-white">
                   Today's Mood
                 </h3>
-                <div className="text-4xl font-bold my-2 text-white">😊</div>
-                <p className="text-sm text-white/90">Feeling positive</p>
+                {isLoading ? (
+                  <LoadingUI />
+                ) : (
+                  <>
+                    <div className="text-4xl font-bold my-2 text-white">
+                      {emotion}
+                    </div>
+                    <p className="text-sm text-white/90">
+                      Feeling {emotionDesc}
+                    </p>
+                  </>
+                )}
               </div>
             </div>
 
@@ -69,10 +135,16 @@ const Dashboard = () => {
                 <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-100">
                   Streak
                 </h3>
-                <div className="text-4xl font-bold my-2">7</div>
-                <p className="text-sm text-blue-700 dark:text-blue-200">
-                  Keep it up!
-                </p>
+                {isLoading ? (
+                  <LoadingUI />
+                ) : (
+                  <>
+                    <div className="text-4xl font-bold my-2">{streak}</div>
+                    <p className="text-sm text-blue-700 dark:text-blue-200">
+                      Keep it up!
+                    </p>
+                  </>
+                )}
               </div>
             </div>
 
@@ -80,27 +152,27 @@ const Dashboard = () => {
               <div className="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-25 transition-opacity">
                 <Clock className="w-32 h-32 text-green-500" />
               </div>
-              <div className="relative h-full flex flex-col justify-end">
+              <div className="relative h-full flex flex-col justify-end text-sans">
                 <h3 className="text-lg font-semibold text-green-900 dark:text-green-100">
                   Last Entry
                 </h3>
-                <div className="text-2xl font-bold my-2">2 hours ago</div>
-                <p className="text-sm text-green-700 dark:text-green-200">
-                  Regular tracking
-                </p>
+                {isLoading ? (
+                  <LoadingUI />
+                ) : (
+                  <>
+                    <div className="text-2xl font-bold my-2">{lastEntry}</div>
+                    <p className="text-sm text-green-700 dark:text-green-200">
+                      Regular tracking
+                    </p>
+                  </>
+                )}
               </div>
             </div>
           </div>
 
           <BackgroundGradient>
             <div className="h-[430px] flex-1 bg-muted/50 flex flex-col justify-center items-center backdrop-blur-sm rounded-xl">
-        
               <MoodInput />
-              {/* <TypingBox
-                placeholders={placeholders}
-                onChange={handleChange}
-                onSubmit={onSubmit}
-              /> */}
             </div>
           </BackgroundGradient>
         </div>

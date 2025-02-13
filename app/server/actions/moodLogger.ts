@@ -13,7 +13,55 @@ interface LogMoodResponse {
     success: boolean;
 }
 
-export default async function logMood({ emotion, activities, moodScore }: LogMoodData): Promise<LogMoodResponse> {
+interface MoodData {
+    success: boolean;
+    data?: {
+        lastEntry: Date | null;
+        latestMood: {
+            emotion: string;
+            score: number;
+            activities: string[];
+        } | null;
+        currentStreak: number;
+        totalEntries: number;
+    };
+    message?: string;
+}
+
+export async function getMoodData(): Promise<MoodData>{
+    try {
+        const token = (await getCookies()).accessToken;
+        if (!token) {
+            return {
+                success: false,
+                message: "No token found. Please log in again.",
+            };
+        }
+        const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/getDailyMoodData`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch mood data. Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data as MoodData;
+
+    } catch (error) {
+        console.error(error);
+        return {
+            success: false,
+            message: error instanceof Error ? error.message : "Failed to fetch mood data"
+        } as MoodData;
+    }
+}
+
+export async function logMood({ emotion, activities, moodScore }: LogMoodData): Promise<LogMoodResponse> {
     try {
         const token = (await getCookies()).accessToken;
         if (!token) {
