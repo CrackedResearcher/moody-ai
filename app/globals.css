@@ -86,3 +86,20 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@keyframes border {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+.animate-border {
+  animation: border 5s linear infinite;
+}
